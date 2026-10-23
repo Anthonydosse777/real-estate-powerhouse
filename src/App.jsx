@@ -1,7 +1,7 @@
 function App() {
   return (
     <main>
-      <h1>Prospect Board</h1>
+      <h1>Real Estate Powerhouse</h1>
     </main>
   )
 }

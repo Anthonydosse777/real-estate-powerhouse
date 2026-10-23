@@ -1,6 +1,6 @@
-# Prospect Board
+# Real Estate Powerhouse
 
-Prospect Board is a mobile-first React app for exploring 2025 Staten Island property sales from NYC Open Data. It offers a neighborhood market snapshot, live search and filters, and property details with nearby sales.
+Real Estate Powerhouse is a mobile-first React app for exploring 2025 Staten Island property sales from NYC Open Data. It offers a neighborhood market snapshot, live search and filters, and property details with nearby sales.
 
 ## API used
 
@@ -10,7 +10,7 @@ Prospect Board is a mobile-first React app for exploring 2025 Staten Island prop
 
 ```bash
 git clone <your-repo-url>
-cd prospect-board
+cd real-estate-powerhouse
 npm install
 npm run dev
 ```

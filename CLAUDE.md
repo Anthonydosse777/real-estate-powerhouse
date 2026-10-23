@@ -1,4 +1,4 @@
-# Prospect Board — rules for Claude Code
+# Real Estate Powerhouse — rules for Claude Code
 
 ## What this is
 CSC 436 Project 3 (Async React). A mobile-first React + Vite app that explores 2025 Staten Island property sales, deployed on Netlify. Keep code simple and readable, with short comments where the logic isn't obvious.
