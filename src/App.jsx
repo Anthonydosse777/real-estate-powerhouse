@@ -1,9 +1,20 @@
-function App() {
+import FailureSwitch from './components/FailureSwitch.jsx'
+import Footer from './components/Footer.jsx'
+import Header from './components/Header.jsx'
+import MarketSnapshot from './components/MarketSnapshot.jsx'
+import SalesList from './components/SalesList.jsx'
+import SimulateFailureProvider from './context/SimulateFailureContext.jsx'
+
+export default function App() {
   return (
-    <main>
-      <h1>Real Estate Powerhouse</h1>
-    </main>
+    <SimulateFailureProvider>
+      <Header />
+      <FailureSwitch />
+      <main className="container site-main">
+        <MarketSnapshot />
+        <SalesList />
+      </main>
+      <Footer />
+    </SimulateFailureProvider>
   )
 }
-
-export default App
