@@ -26,14 +26,14 @@ CSC 436 Project 3 (Async React). A mobile-first React + Vite app that explores 2
 
 ## Code rules
 - ES modules only (import/export). Function components and hooks.
-- One component per file in src/components/, hooks in src/hooks/, API code in src/api/, formatting helpers in src/lib/.
+- One component per file in src/components/, hooks in src/hooks/, API code in src/api/, React context in src/context/, formatting helpers in src/lib/.
 - Keep calculations out of display components; put them in helpers or hooks.
 - No unused files, imports, variables, or commented-out code.
 
 ## CSS rules
 - Mobile-first: design for phones first, then enhance for larger screens. Must look good from 320px to wide desktops.
 - All colors, spacing, radii, shadows, and fonts are CSS variables defined once in :root. No repeated rules; reuse shared classes.
-- Light and dark mode follow the device automatically with prefers-color-scheme. Do NOT build a theme toggle.
+- One black-and-gold theme on every device (black backgrounds, gold accents, warm white text). Do NOT build a theme toggle. Set color-scheme: dark. All text must meet WCAG AA contrast.
 - Style with class selectors only, never attribute selectors like [placeholder="..."].
 - Respect prefers-reduced-motion for every animation.
 
