@@ -1,0 +1,61 @@
+.sale-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  height: 100%;
+}
+
+/* Price leads visually; the address stays first in the markup as the heading */
+.sale-card__price {
+  order: -1;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1.1;
+}
+
+.sale-card__address {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.sale-card__unit {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-gold-light);
+}
+
+.sale-card__meta,
+.sale-card__date {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.sale-card__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.sale-card__fact {
+  display: flex;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-2);
+  font-size: var(--text-sm);
+}
+
+.sale-card__fact dt {
+  color: var(--color-text-muted);
+}
+
+.sale-card__fact dd {
+  font-weight: 600;
+}
