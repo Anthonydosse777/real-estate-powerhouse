@@ -15,4 +15,4 @@ npm install
 npm run dev
 ```
 
-Then open the local URL Vite prints (usually http://localhost:5173).
+**Live site:** https://real-estate-powerhouse.netlify.app
