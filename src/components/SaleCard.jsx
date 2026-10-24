@@ -30,7 +30,7 @@ export default function SaleCard({ sale, onOpen }) {
         <dl className="sale-card__facts">
           {facts.map((fact) => (
             <div key={fact.label} className="sale-card__fact">
-              <dt>{fact.label}</dt>
+              <dt className={fact.hideLabel ? 'visually-hidden' : undefined}>{fact.label}</dt>
               <dd>{fact.value}</dd>
             </div>
           ))}

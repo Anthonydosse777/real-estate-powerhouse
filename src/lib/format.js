@@ -71,11 +71,18 @@ export function formatDate(isoDate) {
   return isoDate ? dateFormatter.format(new Date(`${isoDate}T00:00:00`)) : ''
 }
 
-// Small facts shown on a sale card, skipping anything missing.
+// 1 -> "1 unit", 2 -> "2 units"
+export function formatUnits(value) {
+  if (value === null) return ''
+  return `${formatNumber(value)} ${value === 1 ? 'unit' : 'units'}`
+}
+
+// Small facts shown on a sale card, skipping anything missing. A fact with
+// hideLabel shows only its value ("2 units"); the label stays for screen readers.
 export function getSaleFacts(sale) {
   const facts = []
   if (sale.units !== null) {
-    facts.push({ label: sale.units === 1 ? 'Unit' : 'Units', value: formatNumber(sale.units) })
+    facts.push({ label: 'Residential units', value: formatUnits(sale.units), hideLabel: true })
   }
   if (sale.grossSqft !== null) {
     facts.push({ label: 'Gross sq ft', value: formatNumber(sale.grossSqft) })
@@ -99,7 +106,7 @@ export function getDetailFacts(sale) {
     { label: 'Property type', value: sale.propertyType },
     { label: 'Property group', value: sale.propertyGroup },
     { label: 'Sale date', value: formatDate(sale.date) },
-    { label: 'Residential units', value: formatNumber(sale.units) },
+    { label: 'Residential units', value: formatUnits(sale.units) },
     { label: 'Land sq ft', value: formatNumber(sale.landSqft) },
     { label: 'Gross sq ft', value: formatNumber(sale.grossSqft) },
     { label: 'Price per gross sq ft', value: formatPricePerSqft(getPricePerSqft(sale)) },

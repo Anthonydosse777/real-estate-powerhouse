@@ -286,3 +286,19 @@ PART 4 — Final check
 ```
 
 **Result:** Audited the app against the rubric and past mistakes. Fixed a blank dialog case, title case for names like McArthur and O'Connor, heading levels in the dialog, and screen reader reading of units; added a skip link and a data note; consolidated repeated CSS into shared classes; deleted an empty leftover file; and rewrote the README with a complete file table. Lint and build passed.
+
+## 2026-10-24 — Layout fixes: card overflow and unit labels
+**Tool:** Claude Code
+
+**Prompt:**
+```text
+Two layout fixes. Read CLAUDE.md first and follow every rule in it.
+
+1. Horizontal overflow: at some desktop widths (and at 110–125% browser zoom) the sale cards in the right column run past the edge of the screen and the fact chips get cut off ("Built 195…"). Make the card grid and the fact chips fit at every width from 320px to 1600px. Grid columns must never be wider than their container (use minmax(0, 1fr) or an auto-fill/minmax pattern with a safe minimum), and the fact chips must wrap onto a new line instead of overflowing. Check 1024, 1100, 1180, 1280, and 1440px, and 1280px at 125% zoom. There must be no horizontal scrolling at any width.
+
+2. Ambiguous "Unit 1" chip: on the cards and in the property dialog, the units fact reads "Unit 1", which looks like an apartment number (the address already shows apartment units like "Unit 1"). Change the units fact to read "1 unit" or "2 units", with correct singular and plural. Keep the apartment unit under the address as it is.
+
+Don't change anything else. Run npm run lint and npm run build, then list every file you changed.
+```
+
+**Result:** Fixed the card grid and fact chips so nothing overflows the screen at any width or zoom level, and changed the units fact to read "1 unit" or "2 units" so it can't be confused with an apartment number. Lint and build passed.

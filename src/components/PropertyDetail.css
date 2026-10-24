@@ -80,7 +80,7 @@
 /* Compact rows for comparable sales nearby */
 .compact-row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--space-1) var(--space-3);
 }
 
