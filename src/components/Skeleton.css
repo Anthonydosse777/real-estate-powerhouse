@@ -12,6 +12,10 @@
   min-height: 9rem;
 }
 
+.skeleton--row {
+  min-height: 4rem;
+}
+
 .skeleton__line {
   display: block;
   height: 1rem;
