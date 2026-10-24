@@ -9,7 +9,11 @@ export default function App() {
   return (
     <SimulateFailureProvider>
       <Header />
-      <FailureSwitch />
+      <div className="failure-bar">
+        <div className="container">
+          <FailureSwitch />
+        </div>
+      </div>
       <main className="container site-main">
         <MarketSnapshot />
         <SalesList />

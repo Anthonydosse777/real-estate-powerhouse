@@ -1,14 +1,17 @@
 import { formatCurrency, formatDate, getSaleFacts } from '../lib/format.js'
 import './SaleCard.css'
 
-export default function SaleCard({ sale }) {
+export default function SaleCard({ sale, onOpen }) {
   const facts = getSaleFacts(sale)
 
   return (
     <article className="card sale-card">
       <h3 className="sale-card__address">
-        {sale.address}
-        {sale.unit && <span className="sale-card__unit">Unit {sale.unit}</span>}
+        <button type="button" className="sale-card__open" onClick={() => onOpen(sale.id)}>
+          <span className="visually-hidden">View details for </span>
+          {sale.address}
+          {sale.unit && <span className="sale-card__unit">Unit {sale.unit}</span>}
+        </button>
       </h3>
       <p className="sale-card__price">{formatCurrency(sale.price)}</p>
       <p className="sale-card__meta">

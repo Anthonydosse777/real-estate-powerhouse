@@ -21,6 +21,28 @@
   font-weight: 600;
 }
 
+/* The address is the button that opens the detail view */
+.sale-card__open {
+  display: block;
+  width: 100%;
+  min-height: var(--tap-size);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.sale-card__open:hover {
+  color: var(--color-gold-light);
+  text-decoration-color: var(--color-gold);
+}
+
 .sale-card__unit {
   display: block;
   font-size: var(--text-sm);
