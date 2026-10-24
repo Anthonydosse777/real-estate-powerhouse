@@ -1,3 +1,5 @@
+import { getPricePerSqft } from './stats.js'
+
 // Display helpers. Every function accepts null and returns a safe value.
 
 // Names the API cuts off at 20 characters (or abbreviates), keyed by raw value.
@@ -80,4 +82,32 @@ export function getSaleFacts(sale) {
     facts.push({ label: 'Built', value: String(sale.yearBuilt) })
   }
   return facts
+}
+
+// 412 -> "$412/sq ft"
+export function formatPricePerSqft(value) {
+  return value === null ? '' : `${formatCurrency(value)}/sq ft`
+}
+
+// Every detail-view fact that has a value, in display order.
+export function getDetailFacts(sale) {
+  const facts = [
+    { label: 'Neighborhood', value: sale.neighborhood },
+    { label: 'ZIP code', value: sale.zip },
+    { label: 'Property type', value: sale.propertyType },
+    { label: 'Property group', value: sale.propertyGroup },
+    { label: 'Sale date', value: formatDate(sale.date) },
+    { label: 'Residential units', value: formatNumber(sale.units) },
+    { label: 'Land sq ft', value: formatNumber(sale.landSqft) },
+    { label: 'Gross sq ft', value: formatNumber(sale.grossSqft) },
+    { label: 'Price per gross sq ft', value: formatPricePerSqft(getPricePerSqft(sale)) },
+    { label: 'Year built', value: sale.yearBuilt === null ? '' : String(sale.yearBuilt) },
+    { label: 'Block and lot', value: sale.block && sale.lot ? `Block ${sale.block}, Lot ${sale.lot}` : '' },
+  ]
+  return facts.filter((fact) => fact.value)
+}
+
+export function getMapsUrl(sale) {
+  if (sale.lat === null || sale.lng === null) return null
+  return `https://www.google.com/maps/search/?api=1&query=${sale.lat},${sale.lng}`
 }
