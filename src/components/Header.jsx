@@ -12,7 +12,11 @@ export default function Header() {
         </svg>
         <div>
           <h1 className="site-header__title">Real Estate Powerhouse</h1>
-          <p className="site-header__subtitle">2025 Staten Island property sales</p>
+          <p className="text-meta site-header__subtitle">2025 Staten Island property sales</p>
+          <p className="site-header__note">
+            Every 2025 Staten Island sale recorded by the NYC Department of Finance, with $0 and other
+            non-market transfers (under $10,000) left out.
+          </p>
         </div>
       </div>
     </header>

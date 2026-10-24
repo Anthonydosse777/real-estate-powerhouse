@@ -8,13 +8,16 @@ import SimulateFailureProvider from './context/SimulateFailureContext.jsx'
 export default function App() {
   return (
     <SimulateFailureProvider>
+      <a className="skip-link button" href="#main-content">
+        Skip to main content
+      </a>
       <Header />
       <div className="failure-bar">
         <div className="container">
           <FailureSwitch />
         </div>
       </div>
-      <main className="container site-main">
+      <main id="main-content" className="container site-main">
         <MarketSnapshot />
         <SalesList />
       </main>
