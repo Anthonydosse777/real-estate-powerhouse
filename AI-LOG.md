@@ -235,3 +235,54 @@ PART 6 — Check
 ```
 
 **Result:** The first version added property groups, live search, filters, sorting, and a property detail dialog with nearby sales and sale history. The revised version removed the sale history section, renamed the nearby section to "Comparable sales nearby", and added a failure switch inside the dialog so errors can be tested while it is open. Lint and build passed.
+
+## 2026-10-24 — Final audit, polish, and README
+**Tool:** Claude Code
+
+**Prompt:**
+```text
+Final pass before submission. Read CLAUDE.md first and follow every rule in it. Do NOT add new features. Only audit, fix, polish, and document. Work through these parts in order.
+
+This is graded with this rubric (100 points):
+- Three States Pattern (30): all three states implemented and visible for every fetch; no blank screens
+- useEffect and custom hook (20): correct dependencies, no request loops, clean reusable hook
+- API integration (15): data fetched, parsed, and displayed correctly
+- Search or filter (10): works correctly and updates the view live
+- Code quality (10): readable, well-organized, no console errors
+- Repository and deployment (10): meaningful history, README lists the API used, live URL works
+- User experience (5): loading and error states feel considered, not bolted on
+Points were lost on past projects for: a toggle that announced its state twice to screen readers, repeated CSS rules, images not lazy-loading, placeholder content, an incomplete README file table, leftover unused files, and a CSS rule that depended on placeholder text.
+
+PART 1 — Audit (report before fixing)
+Check every item and note what you find:
+1. Three states: list every fetch in the app (market snapshot, sales list, comparable sales). For each, confirm a loading state, an error state with a readable message and Retry, a data state, and a designed empty state. Look for any moment that could show a blank screen, including the first render and the dialog when its sale can't be found.
+2. useEffect: list every useEffect in the codebase with its dependency array. Confirm there are no request loops, no objects, arrays, or functions in dependency arrays, no fetching on keystrokes, and AbortController cleanup in useFetch. Remove any effect that isn't needed. Confirm useFetch is used by at least two components.
+3. Data: confirm prices, dates, sq ft, and missing values display correctly. Fetch every Staten Island neighborhood name in the data and add corrections for any that are cut off at 20 characters. Check title case on addresses with units, numbered streets (1st, 2nd), and names like "St." or "Mc".
+4. Search and filters: confirm they update live, use the derived-view pattern, and never store the filtered list in state.
+5. Code quality: find unused files, exports, imports, variables, CSS classes, and any console.log. Find duplicate or repeated CSS rules and consolidate them into shared classes or variables. Confirm there are no React warnings (keys, controlled inputs, etc.).
+6. Accessibility: every img has alt, loading="lazy", width, and height; every input has a visible label; errors use role="alert"; loading uses role="status"; the dialog has an accessible name; heading levels go in order (h1, then h2, then h3); focus is visible everywhere; tap targets are at least 44px; text contrast passes WCAG AA, especially gold and muted text on black; no element combines a changing visible label with aria-pressed. Add a "Skip to main content" link if there isn't one.
+7. Layout: check widths of 320px, 375px, 768px, and 1280px. No horizontal scrolling at 320px, nothing overlapping, and consistent spacing. If you have a browser tool available, use it to look at each width.
+8. Content: no placeholder text and no dead links. Near the top of the page, add one short line that explains the data: all 2025 Staten Island sales recorded by the NYC Department of Finance, with $0 and non-market transfers excluded.
+
+PART 2 — Fix
+Fix everything found in PART 1. Keep every fix small and do not change how features work.
+
+PART 3 — README
+Rewrite README.md so it is complete and accurate. Keep the existing live site line exactly as it is. Include:
+- Title and a short description
+- Live site (keep the existing line)
+- Features: market snapshot, live search, filters and sorting, property detail with comparable sales nearby
+- API used: NYC Open Data "NYC Citywide Annualized Calendar Sales Update", with a link to https://catalog.data.gov/dataset/nyc-citywide-annualized-calendar-sales-update, the endpoint https://data.cityofnewyork.us/resource/w2pb-icbu.json, and a note that no API key is needed
+- How to trigger the error state: the "Simulate API failure" switch near the top of the page, and the one inside the property dialog. Explain what happens and how Retry works. Mention that the browser console shows "Failed to load resource" only while the switch is on, because a real request is being made to a broken URL.
+- How the app handles async data: one or two sentences each on the useFetch hook, the three states, and the derived-view filtering
+- Tech stack: React, Vite, plain CSS, Netlify
+- Run locally: git clone, npm install, npm run dev
+- Project structure: a table listing EVERY file in src/ plus CLAUDE.md and AI-LOG.md, each with a one-line description
+- AI usage: one sentence noting that Claude and Claude Code were used, with every prompt recorded in AI-LOG.md
+
+PART 4 — Final check
+- Run npm run lint and npm run build; both must pass with no warnings.
+- Then give me a scorecard: each rubric category, its points, your honest estimated score, and the evidence (file names). After that, list every fix you made and every file you created, changed, or deleted.
+```
+
+**Result:** Audited the app against the rubric and past mistakes. Fixed a blank dialog case, title case for names like McArthur and O'Connor, heading levels in the dialog, and screen reader reading of units; added a skip link and a data note; consolidated repeated CSS into shared classes; deleted an empty leftover file; and rewrote the README with a complete file table. Lint and build passed.

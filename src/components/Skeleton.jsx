@@ -4,7 +4,7 @@ import './Skeleton.css'
 const LAYOUT = {
   sale: { wrapper: '', list: 'card-grid', item: 'card' },
   stat: { wrapper: 'stat-scroller', list: 'stat-grid', item: 'card' },
-  row: { wrapper: '', list: 'compact-list', item: 'compact-row' },
+  row: { wrapper: '', list: 'stack stack--tight', item: 'tile' },
 }
 
 // Placeholder cards have no data, so their keys are just slot names.
@@ -19,7 +19,7 @@ export default function Skeleton({ variant, count, label }) {
       <span className="visually-hidden">{label}</span>
       <ul className={layout.list} aria-hidden="true">
         {slotKeys(variant, count).map((key) => (
-          <li key={key} className={`${layout.item} skeleton skeleton--${variant}`}>
+          <li key={key} className={`${layout.item} stack skeleton--${variant}`}>
             <span className="skeleton__line skeleton__line--title" />
             <span className="skeleton__line" />
             <span className="skeleton__line skeleton__line--short" />

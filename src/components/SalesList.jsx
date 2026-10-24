@@ -88,8 +88,8 @@ export default function SalesList() {
                 </li>
               ))}
             </ul>
-            <div className="list-footer">
-              <p className="list-footer__status">
+            <div className="stack list-footer">
+              <p className="text-meta list-footer__status">
                 Listing {formatNumber(visibleSales.length)} of {formatNumber(matchingSales.length)}
               </p>
               {visibleSales.length < matchingSales.length && (
@@ -110,11 +110,11 @@ export default function SalesList() {
 
   return (
     <section className="section" aria-labelledby="sales-heading">
-      <div className="section__header">
+      <div className="stack stack--tight section__header">
         <h2 id="sales-heading" className="section__title">2025 sales</h2>
       </div>
       {content}
-      <PropertyDetail sale={selectedSale} onClose={() => setSelectedId(null)} />
+      <PropertyDetail saleId={selectedId} sale={selectedSale} onClose={() => setSelectedId(null)} />
     </section>
   )
 }

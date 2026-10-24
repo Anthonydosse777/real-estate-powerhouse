@@ -12,8 +12,6 @@
 }
 
 .failure-switch__hint {
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
   padding-bottom: var(--space-2);
 }
 
@@ -69,11 +67,6 @@
 .switch__input:checked + .switch__track::after {
   transform: translateX(20px);
   background: var(--color-bg);
-}
-
-.switch__input:focus-visible + .switch__track {
-  outline: var(--focus-ring);
-  outline-offset: 3px;
 }
 
 @media (min-width: 640px) {

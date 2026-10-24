@@ -20,9 +20,9 @@ export default function FailureSwitch() {
           aria-describedby={hintId}
         />
         <span className="switch__track" aria-hidden="true" />
-        <span className="switch__label">Simulate API failure</span>
+        <span>Simulate API failure</span>
       </label>
-      <p id={hintId} className="failure-switch__hint">
+      <p id={hintId} className="text-meta failure-switch__hint">
         Turn on to test the error screens.
       </p>
     </div>

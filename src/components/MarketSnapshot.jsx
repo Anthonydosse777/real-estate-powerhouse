@@ -30,9 +30,9 @@ export default function MarketSnapshot() {
       <div className="stat-scroller" tabIndex={0} role="region" aria-label="Busiest neighborhoods">
         <ul className="stat-grid">
           {stats.map((stat) => (
-            <li key={stat.neighborhood} className="card stat-card">
+            <li key={stat.neighborhood} className="card stack stat-card">
               <h3 className="stat-card__name">{stat.neighborhood}</h3>
-              <dl className="stat-card__figures">
+              <dl className="text-meta stat-card__figures">
                 <div>
                   <dt>Sales</dt>
                   <dd className="stat-card__value">{formatNumber(stat.salesCount)}</dd>
@@ -53,9 +53,9 @@ export default function MarketSnapshot() {
 
   return (
     <section className="section" aria-labelledby="snapshot-heading">
-      <div className="section__header">
+      <div className="stack stack--tight section__header">
         <h2 id="snapshot-heading" className="section__title">Market snapshot</h2>
-        <p className="section__intro">
+        <p className="text-meta section__intro">
           The Staten Island neighborhoods with the most sales in 2025. {TYPICAL_PRICE_LABEL} covers
           one- to three-family homes, condos, and co-ops.
         </p>

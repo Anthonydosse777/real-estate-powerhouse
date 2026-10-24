@@ -16,9 +16,6 @@
 
 .stat-card {
   scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
 }
 
 .stat-card__name {
@@ -28,8 +25,6 @@
 .stat-card__figures {
   display: flex;
   gap: var(--space-5);
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
 }
 
 .stat-card__value {

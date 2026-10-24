@@ -4,9 +4,9 @@ import './SalesFilters.css'
 
 export default function SalesFilters({ filters, sortBy, neighborhoods, showClear, onFilterChange, onSortChange, onClear }) {
   return (
-    <form className="filters" role="search" aria-label="Filter sales" onSubmit={(event) => event.preventDefault()}>
-      <div className="filters__field filters__field--search">
-        <label className="filters__label" htmlFor="filter-search">Search address or ZIP</label>
+    <form className="card card-grid filters" role="search" aria-label="Filter sales" onSubmit={(event) => event.preventDefault()}>
+      <div className="stack stack--tight filters__field filters__field--search">
+        <label className="text-meta filters__label" htmlFor="filter-search">Search address or ZIP</label>
         <input
           id="filter-search"
           className="filters__control"
@@ -17,8 +17,8 @@ export default function SalesFilters({ filters, sortBy, neighborhoods, showClear
         />
       </div>
 
-      <div className="filters__field">
-        <label className="filters__label" htmlFor="filter-neighborhood">Neighborhood</label>
+      <div className="stack stack--tight filters__field">
+        <label className="text-meta filters__label" htmlFor="filter-neighborhood">Neighborhood</label>
         <select
           id="filter-neighborhood"
           className="filters__control filters__control--select"
@@ -32,8 +32,8 @@ export default function SalesFilters({ filters, sortBy, neighborhoods, showClear
         </select>
       </div>
 
-      <div className="filters__field">
-        <label className="filters__label" htmlFor="filter-group">Property type</label>
+      <div className="stack stack--tight filters__field">
+        <label className="text-meta filters__label" htmlFor="filter-group">Property type</label>
         <select
           id="filter-group"
           className="filters__control filters__control--select"
@@ -47,8 +47,8 @@ export default function SalesFilters({ filters, sortBy, neighborhoods, showClear
         </select>
       </div>
 
-      <div className="filters__field">
-        <label className="filters__label" htmlFor="filter-price">Price</label>
+      <div className="stack stack--tight filters__field">
+        <label className="text-meta filters__label" htmlFor="filter-price">Price</label>
         <select
           id="filter-price"
           className="filters__control filters__control--select"
@@ -61,8 +61,8 @@ export default function SalesFilters({ filters, sortBy, neighborhoods, showClear
         </select>
       </div>
 
-      <div className="filters__field">
-        <label className="filters__label" htmlFor="filter-sort">Sort</label>
+      <div className="stack stack--tight filters__field">
+        <label className="text-meta filters__label" htmlFor="filter-sort">Sort</label>
         <select
           id="filter-sort"
           className="filters__control filters__control--select"

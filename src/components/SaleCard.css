@@ -1,18 +1,5 @@
 .sale-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
   height: 100%;
-}
-
-/* Price leads visually; the address stays first in the markup as the heading */
-.sale-card__price {
-  order: -1;
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  color: var(--color-gold);
-  line-height: 1.1;
 }
 
 .sale-card__address {
@@ -41,19 +28,6 @@
 .sale-card__open:hover {
   color: var(--color-gold-light);
   text-decoration-color: var(--color-gold);
-}
-
-.sale-card__unit {
-  display: block;
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-gold-light);
-}
-
-.sale-card__meta,
-.sale-card__date {
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
 }
 
 .sale-card__facts {

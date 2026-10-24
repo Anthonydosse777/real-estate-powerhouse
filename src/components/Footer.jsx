@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer text-meta">
       <p className="container">
         Data:{' '}
         <a href="https://catalog.data.gov/dataset/nyc-citywide-annualized-calendar-sales-update">
