@@ -30,12 +30,14 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
 })
 
 // "245 FOREST AVENUE" -> "245 Forest Avenue". Each run of letters is capitalized
-// on its own, so "126Q" and "1J" keep their capital letters.
+// on its own, so "126Q" and "1J" keep their capital letters. Then ordinals go back to
+// lowercase ("4th"), and "Mc" and "O'" names get their second capital ("McArthur", "O'Connor").
 export function toTitleCase(text) {
   if (!text) return ''
   return text
     .replace(/([A-Za-z])([A-Za-z']*)/g, (_, first, rest) => first.toUpperCase() + rest.toLowerCase())
     .replace(/(\d)(St|Nd|Rd|Th)\b/g, (_, digit, suffix) => digit + suffix.toLowerCase())
+    .replace(/\b(Mc|O')([a-z])/g, (_, prefix, letter) => prefix + letter.toUpperCase())
 }
 
 export function formatNeighborhood(raw) {
