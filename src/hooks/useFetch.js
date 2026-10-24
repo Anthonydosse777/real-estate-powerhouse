@@ -31,7 +31,7 @@ export default function useFetch(url) {
   const [attempt, setAttempt] = useState(0)
   // The result remembers which request it belongs to, so loading can be derived
   // during render instead of being set at the start of the effect.
-  const [result, setResult] = useState({ key: null, data: null, error: null })
+  const [result, setResult] = useState({ key: null, url: null, data: null, error: null })
 
   const retry = useCallback(() => setAttempt((count) => count + 1), [])
 
@@ -46,10 +46,16 @@ export default function useFetch(url) {
         if (!response.ok) throw new HttpError(response.status)
         return response.json()
       })
-      .then((data) => setResult({ key, data, error: null }))
+      .then((data) => setResult({ key, url, data, error: null }))
       .catch((error) => {
         if (error.name === 'AbortError') return
-        setResult({ key, data: null, error: toFriendlyMessage(error) })
+        // Keep the last good data for this URL (see below).
+        setResult((previous) => ({
+          key,
+          url,
+          data: previous.url === url ? previous.data : null,
+          error: toFriendlyMessage(error),
+        }))
       })
 
     return () => controller.abort()
@@ -57,9 +63,12 @@ export default function useFetch(url) {
 
   if (url === null) return { data: null, loading: false, error: null, retry }
 
+  // data stays at the last successful response for this URL while reloading or
+  // after an error. Components check loading and error first, so it's never shown
+  // stale, but it still lets the detail dialog find its sale while the list reloads.
   const isCurrent = result.key === getRequestKey(url, simulateFailure, attempt)
   return {
-    data: isCurrent ? result.data : null,
+    data: result.url === url ? result.data : null,
     loading: !isCurrent,
     error: isCurrent ? result.error : null,
     retry,
